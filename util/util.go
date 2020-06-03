@@ -941,3 +941,28 @@ func (s *bytesFilter) Contains(b []byte) bool {
 	}
 	return false
 }
+
+// NewLineType has 3 patterns for renderers.
+type NewLineType int
+
+const (
+// TypeLF is "\n"
+	TypeLF NewLineType = iota
+// TypeCRLF is "\r\n"
+	TypeCRLF NewLineType = iota
+// TypeCR is "\r"
+	TypeCR NewLineType = iota
+)
+
+func ReturnNewLineString(nl NewLineType) string {
+	switch nl {
+	case TypeLF:
+		return "\n"
+	case TypeCRLF:
+		return "\r\n"
+	case TypeCR:
+		return "\r"
+	}
+// default ""
+	return ""
+}
